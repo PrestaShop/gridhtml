@@ -63,23 +63,16 @@ class GridHtml extends ModuleGridEngine
 			$params['emptyMsg'] = 'Empty';
 
 		$html = '
-			<table class="table" id="grid_1">
-				<thead>
-					<tr>';
-					foreach ($params['columns'] as $column)
-						$html .= '<th class="center">
-									<span class="title_box active">'.$column['header'].'</span>
-								</th>';
-					$html .= '
-					</tr>
-				</thead>
-				<tbody></tbody>
-				<tfoot>
-					<tr>
-						<th colspan="'.count($params['columns']).'"></th>
-					</tr>
-				</tfoot>
-			</table>
+		<table class="table" id="grid_1">
+			<thead>
+				<tr>';
+		foreach ($params['columns'] as $column)
+			$html .= '<th class="center"><span class="title_box active">'.$column['header'].'</span></th>';
+		$html .= '</tr>
+			</thead>
+			<tbody></tbody>
+			<tfoot><tr><th colspan="'.count($params['columns']).'"></th></tr></tfoot>
+		</table>
 		<script type="text/javascript">
 			function getGridData(url)
 			{
