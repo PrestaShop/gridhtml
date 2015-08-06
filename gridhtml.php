@@ -62,6 +62,13 @@ class GridHtml extends ModuleGridEngine
 		if (!isset($params['emptyMsg']))
 			$params['emptyMsg'] = 'Empty';
 
+        $customParams = '';
+        if (isset($params['customParams'])) {
+            foreach ($params['customParams'] as $name => $value) {
+                $customParams .= '&'.$name.'='.urlencode($value);
+            }
+        }
+
 		$html = '
 		<table class="table" id="grid_1">
 			<thead>
@@ -133,8 +140,8 @@ class GridHtml extends ModuleGridEngine
 				url = url.replace(/&start=[0-9]+/i, "") + from;
 				getGridData(url);
 			}
-			
-			$(document).ready(function(){getGridData("'.$grider.'&sort='.urlencode($params['defaultSortColumn']).'&dir='.urlencode($params['defaultSortDirection']).'");});
+
+			$(document).ready(function(){getGridData("'.$grider.'&sort='.urlencode($params['defaultSortColumn']).'&dir='.urlencode($params['defaultSortDirection']).$customParams.'");});
 		</script>';
 		return $html;
 	}
