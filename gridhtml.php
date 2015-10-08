@@ -43,24 +43,25 @@ class GridHtml extends ModuleGridEngine
 			$this->version = '1.3.0';
 			$this->author = 'PrestaShop';
 			$this->need_instance = 0;
-			
+
 			Module::__construct();
-			
+
 			$this->displayName = $this->l('Simple HTML table display');
 			$this->description = $this->l('Allows the statistics system to display data in a grid.');
 		}
 	}
-	
+
 	function install()
 	{
 		return (parent::install() AND $this->registerHook('GridEngine'));
 	}
-	
+
 	public static function hookGridEngine($params, $grider)
 	{
+		$GridHtml = new GridHtml();
 		self::$_columns = $params['columns'];
 		if (!isset($params['emptyMsg']))
-			$params['emptyMsg'] = 'Empty';
+			$params['emptyMsg'] = $GridHtml->l('Empty');
 
         $customParams = '';
         if (isset($params['customParams'])) {
@@ -112,7 +113,7 @@ class GridHtml extends ModuleGridEngine
 						$("#grid_1 tbody").append("<tr><td class=\"center\" colspan=\"" + '.count($params['columns']).' + "\">'.$params['emptyMsg'].'</td></tr>");
 				});
 			}
-			
+
 			function gridNextPage(url)
 			{
 				var from = url.match(/&start=[0-9]+/i);
@@ -123,7 +124,7 @@ class GridHtml extends ModuleGridEngine
 				url = url.replace(/&start=[0-9]+/i, "") + from;
 				getGridData(url);
 			}
-			
+
 			function gridPrevPage(url)
 			{
 				var from = url.match(/&start=[0-9]+/i);
@@ -145,38 +146,38 @@ class GridHtml extends ModuleGridEngine
 		</script>';
 		return $html;
 	}
-	
+
 	public function setColumnsInfos(&$infos)
 	{
 	}
-	
+
 	public function setValues($values)
 	{
 		$this->_values = $values;
 	}
-	
+
 	public function setTitle($title)
 	{
 		$this->_title = $title;
 	}
-	
+
 	public function setSize($width, $height)
 	{
 		$this->_width = $width;
 		$this->_height = $height;
 	}
-	
+
 	public function setTotalCount($totalCount)
 	{
 		$this->_totalCount = $totalCount;
 	}
-	
+
 	public function setLimit($start, $limit)
 	{
 		$this->_start = (int)$start;
 		$this->_limit = (int)$limit;
 	}
-	
+
 	public function render()
 	{
 		echo Tools::jsonEncode(array(
@@ -185,6 +186,6 @@ class GridHtml extends ModuleGridEngine
 			'to' => min($this->_start + $this->_limit, $this->_totalCount),
 			'values' => $this->_values
 		));
-	}	
+	}
 }
 
