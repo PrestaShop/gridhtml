@@ -46,8 +46,8 @@ class GridHtml extends ModuleGridEngine
 			
 			Module::__construct();
 			
-			$this->displayName = $this->l('Simple HTML table display');
-			$this->description = $this->l('Allows the statistics system to display data in a grid.');
+			$this->displayName = $this->trans('Simple HTML table display', array(), 'Modules.Gridhtml.Admin');
+			$this->description = $this->trans('Allows the statistics system to display data in a grid.', array(), 'Modules.Gridhtml.Admin');
 		}
 	}
 	
