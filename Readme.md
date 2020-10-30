@@ -2,7 +2,7 @@
 
 ## About
 
-Allows the statistics system to display data in a grid.
+Just allow statistics to be displayed (and therefore analyzed) on your back office.
 
 ## Contributing
 
