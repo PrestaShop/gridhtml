@@ -6,7 +6,5 @@ parameters:
     # From PHPStan 0.12, paths to check are relative to the neon file
     - ../../gridhtml.php
     - ../../translations/
-  ignoreErrors:
-    - '#Call to method assign\(\) on an unknown class Smarty_Data#'
   reportUnmatchedIgnoredErrors: false
   level: 5
