@@ -241,7 +241,7 @@ class GridHtml extends ModuleGridEngine
 
     public function render()
     {
-        echo Tools::jsonEncode([
+        echo json_encode([
             'total' => $this->_totalCount,
             'from' => min($this->_start + 1, $this->_totalCount),
             'to' => min($this->_start + $this->_limit, $this->_totalCount),
