@@ -34,10 +34,6 @@ class GridHtml extends ModuleGridEngine
      */
     private $_values;
     /**
-     * @var array
-     */
-    private static $_columns;
-    /**
      * @var string
      */
     public $_title;
@@ -97,7 +93,6 @@ class GridHtml extends ModuleGridEngine
      */
     public static function hookGridEngine($params, $grider)
     {
-        self::$_columns = $params['columns'];
         if (!isset($params['emptyMsg'])) {
             $params['emptyMsg'] = 'Empty';
         }
