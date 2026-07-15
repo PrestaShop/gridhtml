@@ -78,7 +78,7 @@ class GridHtml extends ModuleGridEngine
 
             $this->displayName = $this->trans('Simple HTML table display', [], 'Modules.Gridhtml.Admin');
             $this->description = $this->trans('Just allow statistics to be displayed (and therefore analyzed) on your back office.', [], 'Modules.Gridhtml.Admin');
-            $this->ps_versions_compliancy = ['min' => '1.7.1.0', 'max' => _PS_VERSION_];
+            $this->ps_versions_compliancy = ['min' => '8.2.0', 'max' => _PS_VERSION_];
         }
     }
 
